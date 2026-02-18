@@ -25,7 +25,7 @@ POST {{BASE_URL}}/auth/login
 Content-Type: application/json
 
 {
-  "email": "test@example.com",
+  "email": "test2@example.com",
   "password": "password123"
 }
 
@@ -286,3 +286,8 @@ Authorization: Bearer {{TOKEN}}
 - 401: Non autorisé (token manquant ou invalide)
 - 404: Non trouvé
 - 409: Conflit (email déjà utilisé)
+
+###
+
+GET http://localhost:3001/questions
+Authorization: Bearer {{TOKEN}}

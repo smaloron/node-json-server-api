@@ -15,20 +15,6 @@
       "password": "$2a$10$8qr6K4Z8Y6qK4Z8Y6qK4ZOzK4Z8Y6qK4Z8Y6qK4Z8Y6qK4Z8Y6qK4",
       "role": "user",
       "createdAt": "2024-01-20T14:30:00.000Z"
-    },
-    {
-      "id": 1771398549170,
-      "email": "test@example.com",
-      "name": "Test User",
-      "password": "$2a$10$E5oQpMPwcEABgRK8kWz7I.07n9A/DfvFT1zwqWX0RB8n1pNUWsHmC",
-      "createdAt": "2026-02-18T07:09:09.235Z"
-    },
-    {
-      "id": 1771398667108,
-      "email": "test2@example.com",
-      "name": "Test User",
-      "password": "$2a$10$92KtqKqIb33ESBsg21xDZObZu4bRN0N5wd14SB2sK2PMEekGDsAqi",
-      "createdAt": "2026-02-18T07:11:07.166Z"
     }
   ],
   "products": [
@@ -174,6 +160,52 @@
       "productId": 4,
       "quantity": 1,
       "addedAt": "2024-02-14T10:00:00.000Z"
+    }
+  ],
+  "quiz": [
+    {
+      "id": 1,
+      "question": "Quelle est la capitale de la France ?",
+      "options": [
+        "Paris",
+        "Lyon",
+        "Marseille",
+        "Toulouse"
+      ],
+      "correctAnswer": 0
+    },
+    {
+      "id": 2,
+      "question": "Combien font 5 + 7 ?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 3,
+      "question": "Quel est le langage de programmation créé par Facebook ?",
+      "options": [
+        "Vue",
+        "Angular",
+        "React",
+        "Svelte"
+      ],
+      "correctAnswer": 2
+    },
+    {
+      "id": 4,
+      "question": "En quelle année a été créé JavaScript ?",
+      "options": [
+        "1995",
+        "2000",
+        "2005",
+        "2010"
+      ],
+      "correctAnswer": 0
     }
   ]
 }
