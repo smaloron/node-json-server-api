@@ -1,0 +1,288 @@
+
+@BASE_URL=http://localhost:3001
+@TOKEN=token
+
+
+---
+
+## AUTHENTIFICATION
+
+### 1. Inscription (Register)
+
+POST {{BASE_URL}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "test2@example.com",
+  "password": "password123",
+  "name": "Test User"
+}
+
+
+### 2. Connexion (Login)
+
+POST {{BASE_URL}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+
+### 3. Vérifier le token
+
+GET {{BASE_URL}}/auth/verify
+Authorization: Bearer {{TOKEN}}
+
+
+---
+
+## PRODUITS
+
+### 4. Liste tous les produits
+
+GET {{BASE_URL}}/products
+Authorization: Bearer {{TOKEN}}
+
+
+### 5. Récupérer un produit spécifique
+
+GET {{BASE_URL}}/products/1
+Authorization: Bearer {{TOKEN}}
+
+
+### 6. Filtrer les produits par catégorie
+
+GET {{BASE_URL}}/products?category=laptops
+Authorization: Bearer {{TOKEN}}
+
+
+### 7. Produits mis en avant
+
+GET {{BASE_URL}}/products?featured=true
+Authorization: Bearer {{TOKEN}}
+
+
+### 8. Recherche de produits
+
+GET {{BASE_URL}}/products?q=iPhone
+Authorization: Bearer {{TOKEN}}
+
+
+### 9. Trier par prix (croissant)
+
+GET {{BASE_URL}}/products?_sort=price&_order=asc
+Authorization: Bearer {{TOKEN}}
+
+
+### 10. Pagination
+
+GET {{BASE_URL}}/products?_page=1&_limit=3
+Authorization: Bearer {{TOKEN}}
+
+
+### 11. Filtrer par plage de prix
+
+GET {{BASE_URL}}/products?price_gte=200&price_lte=1000
+Authorization: Bearer {{TOKEN}}
+
+
+### 12. Créer un nouveau produit
+
+POST {{BASE_URL}}/products
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "iPad Mini",
+  "description": "Tablette compacte et puissante",
+  "price": 549,
+  "category": "tablets",
+  "stock": 12,
+  "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400",
+  "featured": false
+}
+
+
+### 13. Modifier un produit (PUT - remplacement complet)
+
+PUT {{BASE_URL}}/products/1
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "MacBook Pro 14\" M3 Pro",
+  "description": "Ordinateur portable haute performance avec puce M3 Pro",
+  "price": 2499,
+  "category": "laptops",
+  "stock": 10,
+  "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400",
+  "featured": true
+}
+
+
+### 14. Mise à jour partielle (PATCH)
+
+PATCH {{BASE_URL}}/products/1
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "price": 2199,
+  "stock": 8
+}
+
+
+### 15. Supprimer un produit
+
+DELETE {{BASE_URL}}/products/6
+Authorization: Bearer {{TOKEN}}
+
+
+---
+
+## CATÉGORIES
+
+### 16. Liste toutes les catégories
+
+GET {{BASE_URL}}/categories
+Authorization: Bearer {{TOKEN}}
+
+
+### 17. Créer une catégorie
+
+POST {{BASE_URL}}/categories
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "name": "Gaming",
+  "slug": "gaming",
+  "description": "Consoles et accessoires de jeu"
+}
+
+
+###
+
+## COMMANDES
+
+### 18. Liste toutes les commandes
+
+GET {{BASE_URL}}/orders
+Authorization: Bearer {{TOKEN}}
+
+
+### 19. Commandes d'un utilisateur spécifique
+
+GET {{BASE_URL}}/orders?userId=2
+Authorization: Bearer {{TOKEN}}
+
+
+### 20. Créer une nouvelle commande
+
+POST {{BASE_URL}}/orders
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "items": [
+    {
+      "productId": 5,
+      "quantity": 1,
+      "price": 429
+    },
+    {
+      "productId": 6,
+      "quantity": 2,
+      "price": 99
+    }
+  ],
+  "total": 627,
+  "status": "pending",
+  "createdAt": "2024-02-15T10:30:00.000Z"
+}
+
+
+### 21. Mettre à jour le statut d'une commande
+
+PATCH {{BASE_URL}}/orders/2
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "status": "shipped"
+}
+
+
+###
+
+## PANIER
+
+### 22. Voir le contenu du panier
+
+GET {{BASE_URL}}/cart
+Authorization: Bearer {{TOKEN}}
+
+
+### 23. Panier d'un utilisateur spécifique
+
+GET {{BASE_URL}}/cart?userId=2
+Authorization: Bearer {{TOKEN}}
+
+
+### 24. Ajouter un produit au panier
+
+POST {{BASE_URL}}/cart
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "productId": 3,
+  "quantity": 2,
+  "addedAt": "2024-02-15T11:00:00.000Z"
+}
+
+
+### 25. Retirer un article du panier
+
+DELETE {{BASE_URL}}/cart/1
+Authorization: Bearer {{TOKEN}}
+
+
+---
+
+## UTILISATEURS (Protégé)
+
+### 26. Liste tous les utilisateurs
+
+GET {{BASE_URL}}/users
+Authorization: Bearer {{TOKEN}}
+
+
+### 27. Profil utilisateur
+
+GET {{BASE_URL}}/users/2
+Authorization: Bearer {{TOKEN}}
+
+
+---
+
+## NOTES
+
+- Remplacez `{{BASE_URL}}` par `http://localhost:3001`
+- Remplacez `{{TOKEN}}` par le token JWT reçu après login/register
+- Le token expire après 24 heures
+- Tous les endpoints (sauf /auth/*) nécessitent le header Authorization
+
+## CODES DE STATUT HTTP
+
+- 200: Succès (GET, PUT, PATCH)
+- 201: Créé (POST)
+- 204: Pas de contenu (DELETE)
+- 400: Requête invalide
+- 401: Non autorisé (token manquant ou invalide)
+- 404: Non trouvé
+- 409: Conflit (email déjà utilisé)
