@@ -73,7 +73,7 @@ app.post('/auth/register', (req, res) => {
   fs.writeFileSync('./db.json', JSON.stringify(userdb, null, 2));
 
   // Créer un token
-  const token = createToken({ id: newUser.id, email: newUser.email });
+  const token = createToken({ id: newUser.id, email: newUser.email, name: newUser.name });
   
   res.status(201).json({
     message: 'Utilisateur créé avec succès',
@@ -98,7 +98,7 @@ app.post('/auth/login', (req, res) => {
   }
 
   const user = getUserByEmail(email);
-  const token = createToken({ id: user.id, email: user.email });
+  const token = createToken({ id: user.id, email: user.email, name: user.name });
 
   res.status(200).json({
     message: 'Connexion réussie',
@@ -157,7 +157,7 @@ app.use(/^(?!\/auth).*$/, (req, res, next) => {
 app.use(router);
 
 // Démarrage du serveur
-const PORT = 3001;
+const PORT = 3002;
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur http://localhost:${PORT}`);
   console.log(`Base de données: db.json`);

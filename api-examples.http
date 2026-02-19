@@ -1,7 +1,6 @@
 
-@BASE_URL=http://localhost:3001
-@TOKEN=token
-
+@BASE_URL=http://localhost:3002
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTc3MTQyNzkzNjQ0OSwiZW1haWwiOiJtb2lAbW9pLmNvbSIsImlhdCI6MTc3MTQyNzkzNiwiZXhwIjoxNzcxNTE0MzM2fQ.O_gEIjdHB_i_kzeTV-t2StXy1-wqrPkgH9OWXQGZ7-Q
 
 ---
 
@@ -13,9 +12,9 @@ POST {{BASE_URL}}/auth/register
 Content-Type: application/json
 
 {
-  "email": "test2@example.com",
-  "password": "password123",
-  "name": "Test User"
+  "email": "moi@moi.com",
+  "password": "12345678",
+  "name": "MOI"
 }
 
 
@@ -289,5 +288,5 @@ Authorization: Bearer {{TOKEN}}
 
 ###
 
-GET http://localhost:3001/questions
+GET http://localhost:3001/quiz
 Authorization: Bearer {{TOKEN}}

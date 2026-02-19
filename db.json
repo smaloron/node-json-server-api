@@ -15,6 +15,20 @@
       "password": "$2a$10$8qr6K4Z8Y6qK4Z8Y6qK4ZOzK4Z8Y6qK4Z8Y6qK4Z8Y6qK4Z8Y6qK4",
       "role": "user",
       "createdAt": "2024-01-20T14:30:00.000Z"
+    },
+    {
+      "id": 1771427936449,
+      "email": "moi@moi.com",
+      "name": "MOI",
+      "password": "$2a$10$mrujE/kTZ.CBXAiTi.o7tuGievoU6qA7tffDbtf7L6olxzk9LbV66",
+      "createdAt": "2026-02-18T15:18:56.512Z"
+    },
+    {
+      "id": 1771494274384,
+      "email": "seb@email.com",
+      "name": "Seb",
+      "password": "$2a$10$8HfPokouNbQsiNVmhup0FOSINt.A2OcgS0.Ks2g2X3WpnYnr0nrQS",
+      "createdAt": "2026-02-19T09:44:34.455Z"
     }
   ],
   "products": [
